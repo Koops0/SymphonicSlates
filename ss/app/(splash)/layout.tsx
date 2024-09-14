@@ -1,4 +1,11 @@
+'use client'
+
 import { Button } from "@/components/ui/button";
+import { SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton 
+} from '@clerk/nextjs'
 import Link from "next/link";
 import { ReactNode } from "react";
 import logo from "public/logo.png";
@@ -13,9 +20,8 @@ export default function SplashPageLayout({
       <header className="sticky top-0 z-10 flex h-20 bg-background/80 px-4 backdrop-blur md:px-6">
         <nav className="container hidden w-full justify-between gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <div className="flex items-center gap-4">
-            <img src = "/logo.png" alt="SymphonicSlates" className="w-30 h-10" />
             <Link href="/">
-              <h1 className="text-base font-semibold text-left">SymphonicSlates</h1>
+              <img src = "/newlogowhite.png" alt="SymphonicSlates" className="w-50 h-10" />
             </Link>
           </div> 
           <div className="flex items-center gap-4 ml-auto">
@@ -70,9 +76,12 @@ function SplashPageNav() {
       >
         About
       </Link>
-      <Link href="/product">
-        <Button>Login</Button>
-      </Link>
+      <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
     </>
   );
 }
