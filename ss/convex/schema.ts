@@ -6,6 +6,10 @@ import { v } from "convex/values";
 // requires indexes defined on `authTables`.
 export default defineSchema({
   ...authTables,
+  messages: defineTable({
+    userId: v.id("users"),
+    body: v.string(),
+  }),
   scenes: defineTable({
     title: v.string(),
     userId: v.string(),
