@@ -5,7 +5,7 @@ import "./globals.css";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import {
   ClerkProvider,
-} from '@clerk/nextjs'
+} from '@clerk/nextjs';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,7 +31,7 @@ export default function RootLayout({
       <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
-          <ThemeProvider attribute="class">{children}</ThemeProvider>
+        <ThemeProvider attribute="class">{children}</ThemeProvider>
         </body>
       </html>
       </ClerkProvider>

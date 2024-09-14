@@ -1,3 +1,5 @@
+'use client';
+
 import { ConvexLogo } from "@/app/(splash)/GetStarted/ConvexLogo";
 import { Code } from "@/components/Code";
 import { Button } from "@/components/ui/button";
@@ -9,100 +11,52 @@ import {
   StackIcon,
 } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { ReactNode } from "react";
+import React, { useState, ReactNode } from "react";
+import { motion } from 'framer-motion';
 
-export const GetStarted = () => {
+export default function GetStarted() {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+  };
+
   return (
     <div className="flex grow flex-col">
-      <div className="container mb-20 flex grow flex-col justify-center">
-        <h1 className="mb-8 mt-16 flex flex-col items-center gap-8 text-center text-6xl font-extrabold leading-none tracking-tight">
-          Your app powered by
-          <ConvexLogo width={377} height={44} />
+      <div className="container mb-10 flex grow flex-col justify-center mt-20">
+      <img src="/newlogowhite.png" alt="SymphonicSlates Logo"/>
+        <h1 className="mb-8 mt-4 flex flex-col items-center gap-8 text-center text-4xl font-extrabold leading-none tracking-tight">
+          See Sounds. Hear Colours.
         </h1>
-        <div className="mb-8 text-center text-lg text-muted-foreground">
-          Build a realtime full-stack app in no time.
-        </div>
-        <div className="mb-16 flex justify-center gap-4">
-          <Button asChild size="lg">
-            <Link href="/product">Get Started</Link>
+        <div className="flex justify-center items-center h-full">
+      {isClicked ? (
+        <motion.input
+          type="text"
+          className="text-box-class bg-white text-black rounded-lg"
+          placeholder="Enter text here"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        />
+      ) : (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Button asChild size="lg" onClick={handleClick}>
+            <span className="justify-center items-center hover:button-foreground">Get Started</span>
           </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link href="https://docs.convex.dev/home">Convex docs</Link>
-          </Button>
-        </div>
-        <div className="flex flex-col gap-4 bg-muted/50 p-12 dark:bg-transparent">
-          <h2 className="mb-1 text-center text-3xl font-bold md:text-4xl ">
-            Next steps
-          </h2>
-          <div className="mb-1 text-center text-muted-foreground">
-            This template is a starting point for building your web application.
+        </motion.div>
+      )}
+    </div>
+        <div className="flex flex-col bg-muted/50 px-12 dark:bg-transparent">
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex gap-2">
-                  <PlayIcon /> Play with the app
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                Click on{" "}
-                <Link
-                  href="/product"
-                  className="font-medium underline underline-offset-4 hover:no-underline"
-                >
-                  Get Started
-                </Link>{" "}
-                to see the app in action.
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex gap-2">
-                  <StackIcon /> Inspect your database
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                The{" "}
-                <Link
-                  href="https://dashboard.convex.dev/"
-                  className="underline underline-offset-4 hover:no-underline"
-                  target="_blank"
-                >
-                  Convex dashboard
-                </Link>{" "}
-                is already open in another window.
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex gap-2">
-                  <CodeIcon />
-                  Change the backend
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                Edit <Code>convex/messages.ts</Code> to change the backend
-                functionality.
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex gap-2">
-                  <MagicWandIcon />
-                  Change the frontend
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                Edit <Code>app/page.tsx</Code> to change your frontend.
-              </CardContent>
-            </Card>
-          </div>
-        </div>
       </div>
       <div className="px-20 pb-20">
         <div className="container">
           <h2 className="mb-6 text-center text-2xl font-bold">
-            Helpful resources
+            Most Recent Generated Images
           </h2>
           <div className="grid gap-6 md:grid-cols-4">
             <Resource title="Convex Docs" href="https://docs.convex.dev/home">
