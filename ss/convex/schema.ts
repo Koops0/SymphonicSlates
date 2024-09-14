@@ -10,4 +10,9 @@ export default defineSchema({
     userId: v.id("users"),
     body: v.string(),
   }),
+  scenes: defineTable({
+    title: v.string(),
+    userId: v.string(),
+    content: v.optional(v.string()),
+  }).index("by_user", ["userId"])
 });
