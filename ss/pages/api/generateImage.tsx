@@ -13,10 +13,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         track_URI: inputValue,
       });
 
+      console.log('Result: ', result);
       const prompt = (result.data as any)[0];
       res.status(200).json({ prompt });
     } catch (error) {
       res.status(500).json({ error: 'Failed to generate image' });
+      console.error(error);
     }
   } else {
     res.status(405).json({ error: 'Method not allowed' });

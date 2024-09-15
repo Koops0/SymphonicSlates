@@ -22,6 +22,7 @@ export default function ImageGen({ inputValue }: ImageGenProps) {
         body: JSON.stringify({ inputValue }),
       });
 
+      console.log('Response: ', response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
