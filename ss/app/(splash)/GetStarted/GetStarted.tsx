@@ -1,24 +1,24 @@
 'use client';
 
-import { ConvexLogo } from "@/app/(splash)/GetStarted/ConvexLogo";
-import { Code } from "@/components/Code";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  CodeIcon,
-  MagicWandIcon,
-  PlayIcon,
-  StackIcon,
-} from "@radix-ui/react-icons";
 import Link from "next/link";
 import React, { useState, ReactNode } from "react";
 import { motion } from 'framer-motion';
+import { FaPaperPlane } from 'react-icons/fa';
+import imageGen from '@/components/imageGen';
 
 export default function GetStarted() {
-  const [isClicked, setIsClicked] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
-  const handleClick = () => {
-    setIsClicked(true);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSendClick = () => {
+    // Define the function to handle the send icon click
+    imageGen(inputValue);
+    console.log('Send icon clicked with input:', inputValue);
+    // You can now use inputValue as needed
   };
 
   return (
@@ -29,26 +29,25 @@ export default function GetStarted() {
           See Sounds. Hear Colours.
         </h1>
         <div className="flex justify-center items-center h-full">
-      {isClicked ? (
-        <motion.input
+      <motion.div
+        className="relative flex items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <input
           type="text"
-          className="text-box-class bg-white text-black rounded-lg"
+          className="text-box-class bg-white text-black rounded-lg p-2 pr-10 flex-grow"
           placeholder="Enter text here"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          value={inputValue}
+          onChange={handleInputChange}
         />
-      ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Button asChild size="lg" onClick={handleClick}>
-            <span className="justify-center items-center hover:button-foreground">Get Started</span>
-          </Button>
-        </motion.div>
-      )}
+        <FaPaperPlane
+          className="absolute right-2 text-black cursor-pointer"
+          size={24}
+          onClick={handleSendClick}
+        />
+      </motion.div>
     </div>
         <div className="flex flex-col bg-muted/50 px-12 dark:bg-transparent">
           </div>

@@ -1,7 +1,7 @@
 import "./imageGen.css";
 import React, { useState, useEffect } from "react";
 
-export default function imageGen() {
+export default function imageGen(text: string) {
   const [prompt, setPrompt] = useState(
     "ultra realistic close up portrait ((beautiful pale cyberpunk female with heavy black eyeliner))"
   );
@@ -9,7 +9,7 @@ export default function imageGen() {
 
   const API_KEY = process.env.STBL_DIFF_KEY;
   async function getImage() {
-    const raw = JSON.stringify(){
+    const raw = JSON.stringify({
       key: API_KEY,
       prompt: prompt,
       negative_prompt: null,
