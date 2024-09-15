@@ -63,19 +63,19 @@ function SplashPageNav() {
     <>
       <Link
         href="/"
-        className="text-muted-foreground transition-colors hover:text-background mt-4"
+        className="text-muted-foreground transition-colors hover:text-background mt-1"
       >
         Home
       </Link>
       <Link
         href="/Gallery"
-        className="text-muted-foreground transition-colors hover:text-background mt-4"
+        className="text-muted-foreground transition-colors hover:text-background mt-1"
       >
         Gallery
       </Link>
       <Link
         href="/About"
-        className="text-muted-foreground transition-colors hover:text-background mt-4"
+        className="text-muted-foreground transition-colors hover:text-background mt-1"
       >
         About
       </Link>
