@@ -23,8 +23,8 @@ export default function GetStarted() {
 
   return (
     <div className="flex grow flex-col">
-      <div className="container mb-10 flex grow flex-col justify-center mt-20">
-      <img src="/newlogowhite.png" alt="SymphonicSlates Logo"/>
+      <div className="flex flex-col justify-center items-center h-full">
+      <img src="/newlogowhite.png" alt="SymphonicSlates Logo" className="object-scale-down h-64" />
         <h1 className="mb-8 mt-4 flex flex-col items-center gap-8 text-center text-4xl font-extrabold leading-none tracking-tight">
           See Sounds. Hear Colours.
         </h1>
@@ -54,7 +54,7 @@ export default function GetStarted() {
       </div>
       <div className="px-20 pb-20">
         <div className="container">
-          <h2 className="mb-6 text-center text-2xl font-bold">
+          <h2 className="mb-6 mt-6 text-center text-2xl font-bold">
             Most Recent Generated Images
           </h2>
           <div className="grid gap-6 md:grid-cols-4">

@@ -5,7 +5,7 @@ import { SignInButton,
   SignedIn,
   SignedOut,
   UserButton 
-} from '@clerk/nextjs'
+} from '@clerk/nextjs';
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -24,7 +24,7 @@ export default function SplashPageLayout({
         <nav className="container hidden w-full justify-between gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <div className="flex items-center gap-4">
             <Link href="/">
-              <img src="/newlogowhite.png" alt="SymphonicSlates" className="w-50 h-10" />
+              <img src="/newlogowhite.png" alt="SymphonicSlates" className="w-50 h-10 object-left mt-4" />
             </Link>
           </div>
           <div className="flex items-center gap-4 ml-auto">
@@ -63,28 +63,30 @@ function SplashPageNav() {
     <>
       <Link
         href="/"
-        className="text-muted-foreground transition-colors hover:text-foreground"
+        className="text-muted-foreground transition-colors hover:text-background mt-4"
       >
         Home
       </Link>
       <Link
         href="/Gallery"
-        className="text-muted-foreground transition-colors hover:text-foreground"
+        className="text-muted-foreground transition-colors hover:text-background mt-4"
       >
         Gallery
       </Link>
       <Link
         href="/About"
-        className="text-muted-foreground transition-colors hover:text-foreground"
+        className="text-muted-foreground transition-colors hover:text-background mt-4"
       >
         About
       </Link>
+      <div className="text-muted-foreground transition-colors hover:text-background mt-1">
       <SignedOut>
         <SignInButton />
       </SignedOut>
       <SignedIn>
         <UserButton />
       </SignedIn>
+      </div>
     </>
   );
 }
