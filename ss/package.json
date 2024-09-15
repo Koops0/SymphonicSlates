@@ -38,7 +38,7 @@
     "vanta": "^0.5.24"
   },
   "devDependencies": {
-    "@gradio/client": "^1.5.2",
+    "@gradio/client": "1.5.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
