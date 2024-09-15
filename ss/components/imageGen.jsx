@@ -1,14 +1,25 @@
 import "./imageGen.css";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
+import { Client } from "@gradio/client";
 
-export default function imageGen(text: string) {
+export default function App() {
   const [prompt, setPrompt] = useState(
     "ultra realistic close up portrait ((beautiful pale cyberpunk female with heavy black eyeliner))"
   );
+  //const [track, setTrack] = useState("");
+  const [track_uri, setURI] = useState("spotify:track:0QZ1TkFlIwSsLuxE9PwXnA");
   const [data, setData] = useState("");
 
-  const API_KEY = process.env.STBL_DIFF_KEY;
+  const API_KEY = process.env.STBL_DIF_KEY;
+
   async function getImage() {
+    const client = await Client.connect("LoMein123/HTN2024");
+    const result = await client.predict("/predict", {
+      track_URI: track_uri,
+    });
+
+    setPrompt(result.data[0]);
+
     const raw = JSON.stringify({
       key: API_KEY,
       prompt: prompt,
@@ -47,10 +58,10 @@ export default function imageGen(text: string) {
     <div>
       <img src={data} />
       <input
-        onChange={(e) => setPrompt(e.target.value)}
-        placeholder="Enter Prompt"
+        onChange={(e) => setURI(e.target.value)}
+        placeholder="Enter track"
         type="text"
-        name="prompt"
+        name="track"
       />
       <button onClick={getImage}>Get Image</button>
     </div>
