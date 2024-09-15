@@ -18,7 +18,7 @@ export default function App() {
       track_URI: track_uri,
     });
 
-    setPrompt(result.data[0]);
+    setPrompt((result.data as any)[0]);
 
     const raw = JSON.stringify({
       key: API_KEY,
