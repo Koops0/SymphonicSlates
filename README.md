@@ -1,10 +1,12 @@
 # SymphonicSlates
+SymphonicSlates takes any Spotify track and generates an image that captures its underlying emotional tone. It does this by analyzing the track’s hidden semantic meaning. Unlike anything currently available on the market, our product moves beyond basic audio analysis, offering a unique "Audio2Image" experience.
+
+
+![Homepage](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/029/927/datas/original.png)
+
 
 ## Inspiration
 Music has the power to evoke deep emotions, and we wanted to translate that emotional depth into visual art. SymphonicSlates bridges the gap between auditory and visual experiences, offering users a unique never-before-seen way to see the music they love.
-
-## What it does
-SymphonicSlates takes any Spotify track and generates an image that captures its underlying emotional tone. It does this by analyzing the track’s hidden semantic meaning. Unlike anything currently available on the market, our product moves beyond basic audio analysis, offering a unique "Audio2Image" experience.
 
 ## How we built it
 SymphonicSlates was trained on the Moodify dataset, which contains a 278 thousand dataset mapping data about tracks such as "Tempo", "Energy", "Livelyness" to 1 of four moods: Happy, Sad, Angry, and Relaxed. Finally, the extracted mood is then combined with other metrics to be fed into an image diffusion model. To streamline the data flow, Convex was used to create and deploy a robust back-end database, allowing us to store, query, and manage both the music features and image generation outputs efficiently.
